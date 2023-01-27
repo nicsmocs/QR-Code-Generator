@@ -1,0 +1,12 @@
+if(UNIX)
+	set(INSTALL_DEST "/bin")
+else()
+	set(INSTALL_DEST "C:/nicsmocs/bin/")
+endif(UNIX)
+
+add_executable(qrcodegenerator ${CMAKE_SOURCE_DIR}/include/qrcodegen.cpp ${CMAKE_SOURCE_DIR}/include/qrcodegen.h main.cpp)
+target_include_directories(qrcodegenerator PRIVATE ${CMAKE_SOURCE_DIR}/include)
+target_compile_features(qrcodegenerator PRIVATE cxx_std_17)
+target_link_directories(qrcodegenerator PRIVATE ${CMAKE_SOURCE_DIR}/lib)
+target_link_libraries(qrcodegenerator debug nicsmocsd optimized nicsmocs)
+install(TARGETS qrcodegenerator DESTINATION ${INSTALL_DEST})
