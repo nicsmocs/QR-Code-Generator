@@ -1,2 +1,4 @@
 build
 build_raspi
+build_macos
+.DS_Store
